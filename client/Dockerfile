@@ -6,13 +6,14 @@ EXPOSE 5173
 # sets env to node_modules in app
 ENV PATH /client/node_modules/.bin:$PATH
 
-COPY package.json package-lock.json ./
+COPY package.json /client/package.json
+COPY package-lock.json /client/package-lock.json
 
 RUN npm install
 
-COPY . ./
+COPY . /client
 
-CMD [ "npm", "run", "build" ]
+RUN npm run build
 
 FROM nginx:1.16.0
 COPY --from=react-build /client/dist /usr/share/nginx/html
