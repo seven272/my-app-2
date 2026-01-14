@@ -1,0 +1,20 @@
+services:
+  myapp2:
+    build:
+      dockerfile: Dockerfile
+      context: ./client
+    container_name: myapp2_frontend
+    hostname: myapp2_frontend
+    env_file:
+      - ./client/.env
+    ports:
+      - '3006:5173'
+    volumes:
+      - ./client:/client
+      - /client/node_modules
+    restart: always
+
+networks:
+  default:
+    name: nginx_reverse_proxy
+    external: true
