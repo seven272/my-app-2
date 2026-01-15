@@ -8,13 +8,10 @@ services:
     env_file:
       - ./client/.env
     ports:
-      - '3006:5173'
-    volumes:
-      - ./client:/client
-      - /client/node_modules
+      - '4003:5173'
     restart: always
 
 networks:
   default:
-    name: nginx_reverse_proxy
+    name: nginx_tier
     external: true
