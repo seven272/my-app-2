@@ -8,10 +8,10 @@ services:
     env_file:
       - ./client/.env
     ports:
-      - '4001:5173'
+      - '3020:5173'
     restart: always
 
 networks:
   default:
-    name: nginx_tier
+    name: nginx_rp_tier
     external: true
